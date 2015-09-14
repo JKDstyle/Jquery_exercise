@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Phrases</title>
+</head>
+
+<body>
+	<center>
+	<p>    </p>
+	<p id = 'cookies'>   </p>
+	<button id="bruce">bruce</button>
+	
+	<center>
+	<form>
+		<input type="text" name="phrase" placeholder="phrase">
+	</form>
+	</center>
+		
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script>
+	var phrases = [
+	"Vacía tu copa para que pueda ser llenada; quédate sin nada para ganar la totalidad",
+	"Si amas la vida, no pierdas el tiempo, de tiempo está hecha la vida",
+	"Sincronizar un golpe es el secreto para golpear potentemente",
+	"No tener ningún camino como camino, no tener ninguna limitación como limitación"
+	];
+
+	$('button#bruce').on('click', function(event){
+		event.preventDefault();
+		console.log(phrases);
+		var randomphrase = Math.floor(Math.random() * (phrases.length));
+		console.log(randomphrase)
+		$('#cookies').text(phrases[randomphrase])
+		console.log(phrases)
+	})
+	$('form').on('submit', function(event){
+		event.preventDefault()
+		var newPhrase = $('input').val()
+		phrases.push(newPhrase)
+		this.reset();
+
+	});
+
+	</script>
+	</center>
+
+		
+</body>
+</html>
