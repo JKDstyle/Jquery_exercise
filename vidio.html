@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vidio exercise</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	
+</head>
+<body>
+	<center>
+	<h1>Video</h1>
+	<button class="btn btn-danger" id="play">play</button>
+	<button class="btn btn-danger" id="pause">Pause</button>
+
+	<video src='Baby_goats.mp4' controls></video>
+	</center>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script>
+	var vid = document.querySelector('video');
+	$('#play').on('click', function(){
+		vid.play();
+	})
+	$('#pause').on('click', function(){
+		vid.pause();
+	})
+
+	</script>
+</body>
+</html>

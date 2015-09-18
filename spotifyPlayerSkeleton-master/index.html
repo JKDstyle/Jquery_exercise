@@ -1,0 +1,100 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row header">
+			<div class="col-md-12">
+				<form id="search-form">
+					<center>
+						<input id="search-input" type="text" placeholder="song" >						
+					</center>
+				</form>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+
+	<div class="widget">
+		<div class="header">
+			<!-- Try adding/removing these classes: -->
+			<!-- disabled -->
+			<!-- playing -->
+			<div class="btn-play "></div>
+			<p id="name-track">
+				
+			</p>
+
+			<div class="metadata">
+			  <p class="title"></p>
+			  <p class="author"></p>
+
+			  <div class="seekbar">
+			    <progress value="5" max="30"></progress>
+			  </div>
+			</div>
+		</div>
+		<div class="cover">
+		<img src="https://i.scdn.co/image/04da6dfc1f5f45fdeba938a0cc71cf372524fd43">
+		</div>
+
+		<audio src='' class="js-player"></audio>
+	</div>
+
+</body>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+	function traks(){
+		$('#search-form').on('submit', function(event){
+			event.preventDefault()
+			var track = $('#search-input').val();
+			var request = $.get('https://api.spotify.com/v1/search?type=track&q='+ track )
+			request.done(displayTrack)
+
+		})
+	}
+	traks()
+
+
+	function displayTrack(response){
+		console.log(response)
+		$("name-track").empty()
+		
+		var traks = response.tracks.items
+		var firstTrack = traks[0]
+
+		$(".title").text(firstTrack.name)
+		$(".author").text(firstTrack.artists[0].name)
+		$(".js-player").attr('src', firstTrack.preview_url)
+		console.log(firstTrack.preview_url)
+	}
+
+		$('.btn-play').on('click', function(event){
+			event.preventDefault()
+			$('.js-player').trigger('play')
+	 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
